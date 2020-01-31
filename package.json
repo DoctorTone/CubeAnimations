@@ -1,0 +1,30 @@
+{
+  "name": "cubeanimations",
+  "version": "1.0.0",
+  "description": "Animating cubes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoctorTone/CubeAnimations.git"
+  },
+  "author": "DRT Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DoctorTone/CubeAnimations/issues"
+  },
+  "homepage": "https://github.com/DoctorTone/CubeAnimations#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "controlkit": "^0.1.9",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "three": "^0.113.2",
+    "three-trackballcontrols": "0.0.8"
+  }
+}
