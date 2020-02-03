@@ -20,6 +20,8 @@ class Animations extends BaseApp {
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
 
+        this.theta = 0;
+
         //Temp variables
         this.tempVec = new THREE.Vector3();
     }
@@ -74,11 +76,21 @@ class Animations extends BaseApp {
             this.root.add(currentBlock);
         }
 
+        this.blocks = blocks;
+
         this.createGUI();
     }
 
     update() {
         let delta = this.clock.getDelta();
+        let elapsed = this.clock.getElapsedTime();
+
+        // Update block animation
+
+        for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
+            this.blocks[i].position.y = APPCONFIG.WAVE_SCALE * Math.sin(this.theta + (i * APPCONFIG.THETA_INC));
+        }
+        this.theta += APPCONFIG.THETA_INC;
 
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
