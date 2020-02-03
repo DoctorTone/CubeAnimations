@@ -4,7 +4,7 @@ const APPCONFIG = {
     ROOT_ROTATE: Math.PI/4,
     BLOCK_COLOUR : 0xfff000,
     BLOCK_HEIGHT: 5,
-    BLOCK_MATERIAL: 0xc8c8c8,
+    BLOCK_MATERIAL: 0x6a0dad,
     NUM_BLOCKS_PER_ROW: 40,
     NUM_ROWS: 10,
     blockStartPos: {
