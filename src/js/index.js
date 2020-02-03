@@ -103,7 +103,7 @@ class Animations extends BaseApp {
         if(this.zoomingIn) {
             this.tempVec.copy(this.camera.position);
             this.tempVec.multiplyScalar(this.zoomSpeed * delta);
-            this.root.position.add(this.tempVec);
+            this.camera.position.add(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
         }
@@ -111,7 +111,7 @@ class Animations extends BaseApp {
         if(this.zoomingOut) {
             this.tempVec.copy(this.camera.position);
             this.tempVec.multiplyScalar(this.zoomSpeed * delta);
-            this.root.position.sub(this.tempVec);
+            this.camera.position.sub(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
         }
