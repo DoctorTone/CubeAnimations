@@ -65,15 +65,17 @@ class Animations extends BaseApp {
 
         // Add blocks to scene
         
-        const blockMaterial = new THREE.MeshLambertMaterial({color: 0xcdcdcd});
+        const blockMaterial = new THREE.MeshLambertMaterial({color: APPCONFIG.BLOCK_MATERIAL});
         const blockGeom = new THREE.BoxBufferGeometry(APPCONFIG.BLOCK_HEIGHT, APPCONFIG.BLOCK_HEIGHT, APPCONFIG.BLOCK_HEIGHT);
         const blocks = [];
         let currentBlock;
-        for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
-            currentBlock = new THREE.Mesh(blockGeom, blockMaterial);
-            currentBlock.position.set(APPCONFIG.blockStartPos.x + (APPCONFIG.BLOCK_INC_X * i), 0, 0);
-            blocks.push(currentBlock);
-            this.root.add(currentBlock);
+        for (let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
+            for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
+                currentBlock = new THREE.Mesh(blockGeom, blockMaterial);
+                currentBlock.position.set(APPCONFIG.blockStartPos.x + (APPCONFIG.BLOCK_INC_X * i), 0, row * APPCONFIG.BLOCK_INC_Z);
+                blocks.push(currentBlock);
+                this.root.add(currentBlock);
+            }
         }
 
         this.blocks = blocks;
