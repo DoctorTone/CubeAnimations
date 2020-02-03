@@ -8,9 +8,9 @@ const APPCONFIG = {
     NUM_BLOCKS_PER_ROW: 20,
     NUM_ROWS: 10,
     blockStartPos: {
-        x: -65,
+        x: -120,
         y: 0,
-        z: 0
+        z: -20
     },
     BLOCK_INC_X: 15,
     BLOCK_INC_Z: 15,
