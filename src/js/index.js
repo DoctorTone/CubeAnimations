@@ -57,16 +57,22 @@ class Animations extends BaseApp {
         // Create root object.
         this.root = new THREE.Object3D();
         this.addToScene(this.root);
-        this.root.rotation.y = APPCONFIG.ROOT_ROTATE;
 
         // Add ground
         // this.addGroundPlane();
 
         // Add blocks to scene
+        
         const blockMaterial = new THREE.MeshLambertMaterial({color: 0xcdcdcd});
-        const blockGeom = new THREE.BoxBufferGeometry(10, 10, 10);
-        const blockMesh = new THREE.Mesh(blockGeom, blockMaterial);
-        this.root.add(blockMesh);
+        const blockGeom = new THREE.BoxBufferGeometry(APPCONFIG.BLOCK_HEIGHT, APPCONFIG.BLOCK_HEIGHT, APPCONFIG.BLOCK_HEIGHT);
+        const blocks = [];
+        let currentBlock;
+        for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
+            currentBlock = new THREE.Mesh(blockGeom, blockMaterial);
+            currentBlock.position.set(APPCONFIG.blockStartPos.x + (APPCONFIG.BLOCK_INC_X * i), 0, 0);
+            blocks.push(currentBlock);
+            this.root.add(currentBlock);
+        }
 
         this.createGUI();
     }
