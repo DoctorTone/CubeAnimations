@@ -89,11 +89,13 @@ class Animations extends BaseApp {
 
         // Update block animation
 
-        for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
-            this.blocks[i].position.y = APPCONFIG.WAVE_SCALE * Math.sin(this.theta + (i * APPCONFIG.THETA_INC));
+        for (let row=0; row<APPCONFIG.NUM_ROWS; ++row) {
+            for (let i=0; i<APPCONFIG.NUM_BLOCKS_PER_ROW; ++i) {
+                this.blocks[i + (row * APPCONFIG.NUM_BLOCKS_PER_ROW)].position.y = APPCONFIG.WAVE_SCALE * Math.sin(this.theta + (i * APPCONFIG.THETA_INC));
+            }
         }
         this.theta += APPCONFIG.THETA_INC;
-
+        
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
         }
