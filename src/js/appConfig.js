@@ -7,6 +7,9 @@ const APPCONFIG = {
     BLOCK_MATERIAL: 0x6a0dad,
     NUM_BLOCKS_PER_ROW: 40,
     NUM_ROWS: 10,
+    GROUND_WIDTH: 1000,
+    GROUND_HEIGHT: 1000,
+    GROUND_MATERIAL: 0xb9b9b9,
     blockStartPos: {
         x: -180,
         y: 0,

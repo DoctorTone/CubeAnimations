@@ -36,11 +36,11 @@ class Animations extends BaseApp {
     }
 
     addGroundPlane() {
-        const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
+        const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT);
         const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL} );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
-        ground.position.y = 0;
+        ground.position.y = -60;
         this.root.add(ground);
     }
 
@@ -61,7 +61,7 @@ class Animations extends BaseApp {
         this.addToScene(this.root);
 
         // Add ground
-        // this.addGroundPlane();
+        this.addGroundPlane();
 
         // Add blocks to scene
         
