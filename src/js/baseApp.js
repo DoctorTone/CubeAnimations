@@ -96,7 +96,7 @@ export class BaseApp {
             -(event.clientY / window.innerHeight) * 2 + 1);
         this.mouse.down = true;
         this.raycaster.setFromCamera(this.mouse, this.camera);
-        let intersects = this.raycaster.intersectObjects( this.scenes[this.currentScene].children, true );
+        let intersects = this.raycaster.intersectObjects( this.scene.children, true );
         if(intersects.length > 0) {
             this.selectedObject = intersects[0].object;
             //DEBUG
@@ -121,7 +121,8 @@ export class BaseApp {
 
     createScene() {
         let scene = new THREE.Scene();
-        this.scenes.push(scene);
+        //this.scenes.push(scene);
+        this.scene = scene;
 
         let ambientLight = new THREE.AmbientLight(SceneConfig.ambientLightColour);
         scene.add(ambientLight);
@@ -140,16 +141,17 @@ export class BaseApp {
          */
 
 
-        let pointLight = new THREE.PointLight(SceneConfig.pointLightColour);
-        pointLight.position.set(0,1000,1500);
+        let pointLight = new THREE.PointLight(SceneConfig.pointLightColour, 2);
+        pointLight.position.set(0,0,-1000);
         pointLight.name = 'PointLight';
         scene.add(pointLight);
 
-        return this.scenes.length-1;
+        return;
     }
 
     addToScene(object) {
-        this.scenes[this.currentScene].add(object);
+        //this.scenes[this.currentScene].add(object);
+        this.scene.add(object);
     }
 
     getObjectByName(name) {
@@ -208,7 +210,7 @@ export class BaseApp {
 
     run() {
         this.update();
-        this.renderer.render( this.scenes[this.currentScene], this.camera );
+        this.renderer.render( this.scene, this.camera );
         if(this.stats) this.stats.update();
         requestAnimationFrame(() => {
             this.run();

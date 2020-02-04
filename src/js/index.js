@@ -63,6 +63,22 @@ class Animations extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
+        //cubemap
+        var path = "./textures/skybox/";
+        var format = '.jpg';
+        var urls = [
+            path + 'px' + format, path + 'nx' + format,
+            path + 'py' + format, path + 'ny' + format,
+            path + 'pz' + format, path + 'nz' + format
+        ];
+
+        var reflectionCube = new THREE.CubeTextureLoader().load( urls, null, null, error => {
+            console.log("Error = ", error);
+        } );
+        reflectionCube.format = THREE.RGBFormat;
+        //this.scenes[this.currentScene].background = reflectionCube;
+        this.scene.background = reflectionCube;
+                
         // Add blocks to scene
         
         const blockMaterial = new THREE.MeshLambertMaterial({color: APPCONFIG.BLOCK_MATERIAL});
